@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Display the header
+
 echo -e "\e[31m"
 echo " ___                   _     _ _             "
 echo "|_ _|_ __   __ _ _   _(_)___(_) |_ ___  _ __"
@@ -17,19 +17,19 @@ echo -e "\e[32m"
 echo "Insert IP address you want to scan"
 echo -e "\e[0m"
 
-# Read the IP address from user input
+
 read ip_to_scan
 
-# Perform a ping to the specified IP address
+
 ping -c 1 $ip_to_scan > PortsScanned.txt
 
-# Check if the ping was successful
+
 if ! grep -q "1 received" PortsScanned.txt; then
     echo "The machine is not operational" 
     exit 1
 fi
 
-# Extract the TTL value from the ping result
+
 ttl_value=$(grep -o "ttl=[0-9]\+" PortsScanned.txt | grep -o "[0-9]\+")
 
 if [ -n "$ttl_value" ]; then
@@ -39,7 +39,7 @@ if [ -n "$ttl_value" ]; then
         exit 1
 fi
 
-    # Determine the operating system based on the TTL value
+
     if [ "$ttl_value" -lt 65 ]; then
         echo "This is a Linux Machine"
     elif [ "$ttl_value" -lt 129 ]; then
