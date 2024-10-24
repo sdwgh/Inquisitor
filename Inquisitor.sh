@@ -51,6 +51,6 @@ else
     echo "TTL value not found."
 fi
 
-nmap -sS -sV -p- --open --min-rate 5000 $ip_to_scan -n -Pn | grep -oP '\d{1,5}/tcp\s+open' >> PortsScanned.txt
+nmap -sS -p- --open --min-rate 5000 $ip_to_scan -n -Pn | grep -oP '\d{1,5}/tcp\s+open' >> PortsScanned.txt
 
 cat PortsScanned.txt
