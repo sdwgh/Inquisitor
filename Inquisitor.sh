@@ -33,7 +33,7 @@ fi
 ttl_value=$(grep -o "ttl=[0-9]\+" PortsScanned.txt | grep -o "[0-9]\+")
 
 if [ -n "$ttl_value" ]; then
-    # Check if ttl_value is a number
+
     if ! [[ "$ttl_value" =~ ^[0-9]+$ ]]; then
         echo "The value of ttl_value is not a number: '$ttl_value'"
         exit 1
